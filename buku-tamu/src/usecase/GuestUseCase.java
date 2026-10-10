@@ -25,13 +25,22 @@ public class GuestUseCase {
         if (name == null || name.trim().isEmpty()) {
             throw new ValidationException("Nama tamu tidak boleh kosong");
         }
+        if (name.trim().length() < 2) {
+            throw new ValidationException("Nama tamu minimal 2 karakter");
+        }
         if (purpose == null || purpose.trim().isEmpty()) {
             throw new ValidationException("Tujuan kunjungan tidak boleh kosong");
+        }
+        if (purpose.trim().length() < 2) {
+            throw new ValidationException("Tujuan kunjungan minimal 2 karakter");
         }
         return guestRepository.save(name.trim(), purpose.trim());
     }
 
-    public void removeGuest(int id) throws EntityNotFoundException {
+    public void removeGuest(int id) throws EntityNotFoundException, ValidationException {
+        if (id <= 0) {
+            throw new ValidationException("ID tidak valid");
+        }
         boolean deleted = guestRepository.deleteById(id);
         if (!deleted) {
             throw new EntityNotFoundException(id);
@@ -39,6 +48,9 @@ public class GuestUseCase {
     }
 
     public List<Guest> searchGuests(String keyword) {
+        if (keyword == null) {
+            return List.of();
+        }
         String lowerKeyword = keyword.toLowerCase();
         return guestRepository.findBy(g -> g.getName().toLowerCase().contains(lowerKeyword));
     }

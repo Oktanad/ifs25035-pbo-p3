@@ -5,16 +5,9 @@ package domain.entity;
  * Berada di layer domain — tidak bergantung pada layer lain.
  */
 public class Item {
-    /** ID unik barang, tidak boleh diubah setelah dibuat. */
     private final int id;
-
-    /** Nama barang. */
     private String name;
-
-    /** Jumlah stok barang (selalu > 0). */
     private int quantity;
-
-    /** Kategori barang. */
     private String category;
 
     public Item(int id, String name, int quantity, String category) {
@@ -40,17 +33,14 @@ public class Item {
         return category;
     }
 
-    /** Mengubah nama barang. */
     public void changeName(String name) {
         this.name = name;
     }
 
-    /** Mengubah jumlah stok barang. */
     public void changeQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    /** Mengubah kategori barang. */
     public void changeCategory(String category) {
         this.category = category;
     }

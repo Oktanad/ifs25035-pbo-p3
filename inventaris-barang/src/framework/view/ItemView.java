@@ -21,7 +21,6 @@ public class ItemView {
         this.presenter = presenter;
     }
 
-    /** Menampilkan menu utama dan loop interaksi user. */
     public void show() {
         boolean running = true;
         while (running) {
@@ -85,7 +84,7 @@ public class ItemView {
             Item item = itemUseCase.addItem(name, quantity, category);
             presenter.showAddSuccess(item);
         } catch (ValidationException e) {
-            presenter.showInvalidQuantity();
+            presenter.showError(e.getMessage());
         }
     }
 
@@ -122,7 +121,7 @@ public class ItemView {
         } catch (EntityNotFoundException e) {
             presenter.showUpdateFailed(e.getId());
         } catch (ValidationException e) {
-            presenter.showInvalidQuantity();
+            presenter.showError(e.getMessage());
         }
     }
 

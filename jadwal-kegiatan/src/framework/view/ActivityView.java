@@ -21,7 +21,6 @@ public class ActivityView {
         this.presenter = presenter;
     }
 
-    /** Menampilkan menu utama dan loop interaksi user. */
     public void show() {
         boolean running = true;
         while (running) {
@@ -77,7 +76,7 @@ public class ActivityView {
             Activity activity = activityUseCase.addActivity(title, day, time);
             presenter.showAddSuccess(activity);
         } catch (ValidationException e) {
-            // Validasi input
+            presenter.showError(e.getMessage());
         }
     }
 
@@ -110,7 +109,7 @@ public class ActivityView {
         } catch (EntityNotFoundException e) {
             presenter.showUpdateFailed(e.getId());
         } catch (ValidationException e) {
-            // Validasi input
+            presenter.showError(e.getMessage());
         }
     }
 

@@ -5,16 +5,9 @@ package domain.entity;
  * Berada di layer domain - tidak bergantung pada layer lain.
  */
 public class Transaction {
-    /** ID unik transaksi, tidak boleh diubah setelah dibuat. */
     private final int id;
-
-    /** Keterangan / deskripsi transaksi. */
     private String description;
-
-    /** Jumlah nominal transaksi (harus > 0). */
     private long amount;
-
-    /** Tipe transaksi: INCOME atau EXPENSE. */
     private TransactionType type;
 
     public Transaction(int id, String description, long amount, TransactionType type) {

@@ -5,13 +5,8 @@ package domain.entity;
  * Berada di layer domain — tidak bergantung pada layer lain.
  */
 public class Guest {
-    /** ID unik tamu, tidak boleh diubah setelah dibuat. */
     private final int id;
-
-    /** Nama tamu. */
     private String name;
-
-    /** Tujuan kunjungan. */
     private String purpose;
 
     public Guest(int id, String name, String purpose) {
@@ -32,12 +27,10 @@ public class Guest {
         return purpose;
     }
 
-    /** Mengubah nama tamu. */
     public void changeName(String name) {
         this.name = name;
     }
 
-    /** Mengubah tujuan kunjungan. */
     public void changePurpose(String purpose) {
         this.purpose = purpose;
     }

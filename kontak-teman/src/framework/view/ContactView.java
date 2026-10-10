@@ -21,7 +21,6 @@ public class ContactView {
         this.presenter = presenter;
     }
 
-    /** Menampilkan menu utama dan loop interaksi user. */
     public void show() {
         boolean running = true;
         while (running) {
@@ -77,7 +76,7 @@ public class ContactView {
             Contact contact = contactUseCase.addContact(name, phone, email);
             presenter.showAddSuccess(contact);
         } catch (ValidationException e) {
-            // Validasi input
+            presenter.showError(e.getMessage());
         }
     }
 
@@ -110,7 +109,7 @@ public class ContactView {
         } catch (EntityNotFoundException e) {
             presenter.showUpdateFailed(e.getId());
         } catch (ValidationException e) {
-            // Validasi input
+            presenter.showError(e.getMessage());
         }
     }
 

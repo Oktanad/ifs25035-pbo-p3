@@ -5,16 +5,9 @@ package domain.entity;
  * Berada di layer domain — tidak bergantung pada layer lain.
  */
 public class Activity {
-    /** ID unik kegiatan, tidak boleh diubah setelah dibuat. */
     private final int id;
-
-    /** Judul kegiatan. */
     private String title;
-
-    /** Hari pelaksanaan kegiatan (mis. Senin). */
     private String day;
-
-    /** Waktu pelaksanaan kegiatan (mis. 08:00). */
     private String time;
 
     public Activity(int id, String title, String day, String time) {
@@ -40,17 +33,14 @@ public class Activity {
         return time;
     }
 
-    /** Mengubah judul kegiatan. */
     public void changeTitle(String title) {
         this.title = title;
     }
 
-    /** Mengubah hari kegiatan. */
     public void changeDay(String day) {
         this.day = day;
     }
 
-    /** Mengubah waktu kegiatan. */
     public void changeTime(String time) {
         this.time = time;
     }

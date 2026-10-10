@@ -27,16 +27,25 @@ public class ItemUseCase {
         if (name == null || name.trim().isEmpty()) {
             throw new ValidationException("Nama barang tidak boleh kosong");
         }
+        if (name.trim().length() < 2) {
+            throw new ValidationException("Nama barang minimal 2 karakter");
+        }
         if (quantity <= 0) {
             throw new ValidationException("Jumlah stok tidak valid");
         }
         if (category == null || category.trim().isEmpty()) {
             throw new ValidationException("Kategori barang tidak boleh kosong");
         }
+        if (category.trim().length() < 2) {
+            throw new ValidationException("Kategori barang minimal 2 karakter");
+        }
         return itemRepository.save(name.trim(), quantity, category.trim());
     }
 
     public void updateStock(int id, Integer quantity) throws EntityNotFoundException, ValidationException {
+        if (id <= 0) {
+            throw new ValidationException("ID tidak valid");
+        }
         Optional<Item> found = itemRepository.findById(id);
         if (found.isEmpty()) {
             throw new EntityNotFoundException(id);
@@ -51,7 +60,10 @@ public class ItemUseCase {
         }
     }
 
-    public void removeItem(int id) throws EntityNotFoundException {
+    public void removeItem(int id) throws EntityNotFoundException, ValidationException {
+        if (id <= 0) {
+            throw new ValidationException("ID tidak valid");
+        }
         boolean deleted = itemRepository.deleteById(id);
         if (!deleted) {
             throw new EntityNotFoundException(id);
@@ -59,11 +71,17 @@ public class ItemUseCase {
     }
 
     public List<Item> searchItems(String keyword) {
+        if (keyword == null) {
+            return List.of();
+        }
         String lowerKeyword = keyword.toLowerCase();
         return itemRepository.findBy(i -> i.getName().toLowerCase().contains(lowerKeyword));
     }
 
     public List<Item> sortItems(SortOption option) {
+        if (option == null) {
+            return List.of();
+        }
         return itemRepository.findAll().stream()
                 .sorted(option.comparator())
                 .toList();

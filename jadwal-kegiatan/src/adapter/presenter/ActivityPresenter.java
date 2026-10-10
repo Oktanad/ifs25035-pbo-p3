@@ -27,58 +27,51 @@ public class ActivityPresenter {
         }
     }
 
-    /** Menampilkan daftar semua kegiatan. */
     public void showActivities(List<Activity> activities) {
         printList(activities, "Daftar Kegiatan:", "- Data kegiatan belum tersedia!");
     }
 
-    /** Menampilkan hasil pencarian berdasarkan kata kunci. */
     public void showSearchResults(List<Activity> activities, String keyword) {
         printList(activities, "Hasil Pencarian: \"" + keyword + "\"", "- Kegiatan tidak ditemukan!");
     }
 
-    /** Menampilkan daftar kegiatan yang sudah diurutkan. */
     public void showSortedActivities(List<Activity> activities) {
         printList(activities, "Daftar Kegiatan (Terurut):", "- Data kegiatan belum tersedia!");
     }
 
-    /** Menampilkan pesan sukses setelah menambah kegiatan. */
     public void showAddSuccess(Activity activity) {
         System.out.printf("Berhasil menambah kegiatan: %s%n", format(activity));
     }
 
-    /** Menampilkan pesan sukses setelah mengubah kegiatan. */
     public void showUpdateSuccess() {
         System.out.println("Berhasil mengubah kegiatan.");
     }
 
-    /** Menampilkan pesan gagal saat mengubah kegiatan. */
     public void showUpdateFailed(int id) {
         System.out.printf("[!] Gagal mengubah kegiatan dengan ID: %d.%n", id);
     }
 
-    /** Menampilkan pesan sukses setelah menghapus kegiatan. */
     public void showRemoveSuccess() {
         System.out.println("Berhasil menghapus kegiatan.");
     }
 
-    /** Menampilkan pesan gagal saat menghapus kegiatan. */
     public void showRemoveFailed(int id) {
         System.out.printf("[!] Gagal menghapus kegiatan dengan ID: %d.%n", id);
     }
 
-    /** Menampilkan pesan saat pilihan menu tidak dikenali. */
     public void showInvalidChoice() {
         System.out.println("[!] Pilihan tidak dimengerti.");
     }
 
-    /** Menampilkan pesan saat ID yang dimasukkan tidak valid. */
     public void showInvalidId() {
         System.out.println("[!] ID tidak valid!");
     }
 
-    /** Menampilkan pesan saat opsi pengurutan tidak valid. */
     public void showInvalidSortOption() {
         System.out.println("[!] Pilihan tidak valid!");
+    }
+
+    public void showError(String message) {
+        System.out.println("[!] " + message);
     }
 }

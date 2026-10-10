@@ -92,7 +92,7 @@ public class FinanceView {
             var t = financeUseCase.addTransaction(description, amount, type);
             presenter.showAddSuccess(t, financeUseCase.getBalance());
         } catch (ValidationException e) {
-            presenter.showInvalidAmount();
+            presenter.showError(e.getMessage());
         }
     }
 

@@ -20,7 +20,6 @@ public class GuestView {
         this.presenter = presenter;
     }
 
-    /** Menampilkan menu utama dan loop interaksi user. */
     public void show() {
         boolean running = true;
         while (running) {
@@ -67,7 +66,7 @@ public class GuestView {
             Guest guest = guestUseCase.registerGuest(name, purpose);
             presenter.showRegisterSuccess(guest);
         } catch (ValidationException e) {
-            // Validasi input
+            presenter.showError(e.getMessage());
         }
     }
 

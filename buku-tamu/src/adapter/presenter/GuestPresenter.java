@@ -26,38 +26,35 @@ public class GuestPresenter {
         }
     }
 
-    /** Menampilkan daftar semua tamu. */
     public void showGuests(List<Guest> guests) {
         printList(guests, "Daftar Tamu:", "- Data tamu belum tersedia!");
     }
 
-    /** Menampilkan hasil pencarian berdasarkan kata kunci. */
     public void showSearchResults(List<Guest> guests, String keyword) {
         printList(guests, "Hasil Pencarian: \"" + keyword + "\"", "- Tamu tidak ditemukan!");
     }
 
-    /** Menampilkan pesan sukses setelah mendaftarkan tamu. */
     public void showRegisterSuccess(Guest guest) {
         System.out.printf("Berhasil mendaftarkan tamu: %s%n", format(guest));
     }
 
-    /** Menampilkan pesan sukses setelah menghapus tamu. */
     public void showRemoveSuccess() {
         System.out.println("Berhasil menghapus tamu.");
     }
 
-    /** Menampilkan pesan gagal saat menghapus tamu. */
     public void showRemoveFailed(int id) {
         System.out.printf("[!] Gagal menghapus tamu dengan ID: %d.%n", id);
     }
 
-    /** Menampilkan pesan saat pilihan menu tidak dikenali. */
     public void showInvalidChoice() {
         System.out.println("[!] Pilihan tidak dimengerti.");
     }
 
-    /** Menampilkan pesan saat ID yang dimasukkan tidak valid. */
     public void showInvalidId() {
         System.out.println("[!] ID tidak valid!");
+    }
+
+    public void showError(String message) {
+        System.out.println("[!] " + message);
     }
 }
